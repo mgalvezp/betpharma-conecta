@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#d71920" />
+  <title>BET PHARMA CONECTA</title>
+  <style>
+    :root{
+      --red:#d71920;
+      --red-dark:#aa1117;
+      --ink:#20242a;
+      --muted:#6b7280;
+      --bg:#f5f7fa;
+      --card:#ffffff;
+      --line:#e5e7eb;
+      --green:#11875d;
+      --amber:#b7791f;
+      --blue:#2463a8;
+      --purple:#7653a8;
+      --shadow:0 14px 35px rgba(15,23,42,.08);
+      --radius:20px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      background:var(--bg);
+    }
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    .app{min-height:100vh}
+    .topbar{
+      position:sticky;top:0;z-index:30;
+      display:flex;justify-content:space-between;align-items:center;
+      padding:14px 24px;
+      background:rgba(255,255,255,.94);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .brand{display:flex;align-items:center;gap:12px;font-weight:900}
+    .brand-mark{
+      width:42px;height:42px;border-radius:13px;
+      display:grid;place-items:center;background:var(--red);color:#fff;
+      font-size:20px;
+    }
+    .brand small{display:block;color:var(--muted);font-weight:600;font-size:11px}
+    .top-actions{display:flex;gap:8px}
+    .btn{
+      border:0;border-radius:12px;padding:10px 14px;font-weight:800;
+      background:#eef2f7;color:var(--ink);
+    }
+    .btn.primary{background:var(--red);color:#fff}
+    .btn.primary:hover{background:var(--red-dark)}
+    .btn.ghost{background:transparent;border:1px solid var(--line)}
+    .hero{
+      max-width:1180px;margin:0 auto;padding:44px 24px 24px;
+      display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:stretch;
+    }
+    .hero-main,.hero-side,.card{
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
+    }
+    .hero-main{padding:34px;position:relative;overflow:hidden}
+    .hero-main:after{
+      content:"";position:absolute;right:-100px;top:-100px;width:260px;height:260px;
+      border-radius:50%;background:rgba(215,25,32,.08)
+    }
+    .eyebrow{color:var(--red);font-weight:900;text-transform:uppercase;letter-spacing:.08em;font-size:12px}
+    h1{font-size:clamp(38px,5vw,66px);line-height:.96;margin:14px 0 16px;max-width:760px}
+    .lead{font-size:18px;line-height:1.55;color:#4b5563;max-width:760px}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+    .chip{padding:9px 12px;border-radius:999px;background:#fff2f2;color:#a4171d;font-weight:800;font-size:13px}
+    .hero-side{padding:26px;display:flex;flex-direction:column;justify-content:space-between}
+    .heart{
+      width:140px;height:140px;margin:8px auto 18px;
+      display:grid;place-items:center;border-radius:50%;
+      background:linear-gradient(135deg,#fff2f2,#ffe1e3);
+      font-size:72px;
+    }
+    .hero-side h3{margin:0 0 8px}
+    .hero-side p{color:var(--muted);line-height:1.5}
+    .layout{max-width:1180px;margin:0 auto;padding:0 24px 50px}
+    .tabs{
+      display:flex;gap:8px;overflow:auto;padding:10px 0 18px;
+      scrollbar-width:none;
+    }
+    .tab{
+      white-space:nowrap;border:1px solid var(--line);background:#fff;
+      border-radius:999px;padding:10px 15px;font-weight:800;color:#4b5563;
+    }
+    .tab.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+    .view{display:none}
+    .view.active{display:block}
+    .grid{display:grid;gap:16px}
+    .grid.cols-4{grid-template-columns:repeat(4,1fr)}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    .card{padding:22px}
+    .card h3{margin:0 0 8px}
+    .card p{color:var(--muted);line-height:1.5}
+    .metric{font-size:30px;font-weight:950}
+    .metric-label{color:var(--muted);font-weight:700;font-size:13px;margin-top:4px}
+    .section-title{display:flex;align-items:end;justify-content:space-between;gap:18px;margin:22px 0 14px}
+    .section-title h2{margin:0;font-size:28px}
+    .section-title p{margin:0;color:var(--muted)}
+    .product-card{display:flex;flex-direction:column;min-height:220px}
+    .product-top{display:flex;justify-content:space-between;gap:10px}
+    .tag{font-size:11px;font-weight:900;padding:6px 8px;border-radius:999px;background:#eef2f7;color:#4b5563}
+    .tag.ok{background:#e8f7f0;color:var(--green)}
+    .tag.warning{background:#fff7df;color:var(--amber)}
+    .tag.critical{background:#ffe6e8;color:var(--red)}
+    .price{font-size:24px;font-weight:950;margin-top:auto}
+    .stock{margin:8px 0;color:var(--muted);font-size:13px}
+    .form-row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .field{display:flex;flex-direction:column;gap:6px}
+    .field label{font-size:12px;font-weight:900;color:#4b5563}
+    .field input,.field select{
+      width:100%;border:1px solid var(--line);border-radius:12px;padding:12px 13px;background:#fff;
+      outline:none;
+    }
+    .field input:focus,.field select:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(215,25,32,.08)}
+    .loyalty{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px}
+    .loyalty-card{
+      background:linear-gradient(145deg,#1f2937,#111827);color:#fff;border-radius:22px;padding:26px;min-height:260px;
+      position:relative;overflow:hidden;
+    }
+    .loyalty-card:after{
+      content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(215,25,32,.38);right:-55px;bottom:-70px
+    }
+    .points{font-size:52px;font-weight:950}
+    .progress{height:10px;background:rgba(255,255,255,.16);border-radius:999px;overflow:hidden;margin:16px 0 8px}
+    .progress span{display:block;height:100%;background:var(--red);border-radius:inherit}
+    .campaign{
+      border-left:5px solid var(--red);padding-left:16px
+    }
+    .campaign h4{margin:0 0 5px}
+    .campaign small{color:var(--muted)}
+    .alert{
+      display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+      padding:13px 0;border-bottom:1px solid var(--line)
+    }
+    .alert:last-child{border:0}
+    .alert strong{display:block}
+    .alert small{color:var(--muted)}
+    .empty{padding:30px;text-align:center;color:var(--muted)}
+    .pill{padding:5px 8px;border-radius:999px;font-size:11px;font-weight:900}
+    .pill.red{background:#ffe6e8;color:var(--red)}
+    .pill.amber{background:#fff7df;color:var(--amber)}
+    .pill.green{background:#e8f7f0;color:var(--green)}
+    .admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .table-wrap{overflow:auto}
+    table{width:100%;border-collapse:collapse;font-size:13px}
+    th,td{padding:11px 10px;text-align:left;border-bottom:1px solid var(--line)}
+    th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+    .cart-line{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+    .cart-line:last-child{border:0}
+    .qty{display:flex;align-items:center;gap:6px}
+    .qty button{width:28px;height:28px;border:0;border-radius:8px;background:#eef2f7;font-weight:900}
+    .toast{
+      position:fixed;right:20px;bottom:20px;background:#111827;color:#fff;padding:13px 16px;border-radius:12px;
+      box-shadow:var(--shadow);opacity:0;transform:translateY(20px);pointer-events:none;transition:.25s;z-index:100
+    }
+    .toast.show{opacity:1;transform:translateY(0)}
+    .modal{
+      position:fixed;inset:0;background:rgba(15,23,42,.48);display:none;place-items:center;padding:20px;z-index:80
+    }
+    .modal.show{display:grid}
+    .modal-box{width:min(620px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:22px;padding:24px;box-shadow:var(--shadow)}
+    .modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:16px}
+    .close{border:0;background:#eef2f7;width:36px;height:36px;border-radius:10px;font-size:20px}
+    .mini-note{font-size:12px;color:var(--muted);line-height:1.45}
+    footer{padding:24px;text-align:center;color:var(--muted);font-size:12px}
+    @media(max-width:900px){
+      .hero,.loyalty,.admin-grid{grid-template-columns:1fr}
+      .grid.cols-4,.grid.cols-3{grid-template-columns:repeat(2,1fr)}
+    }
+    @media(max-width:600px){
+      .topbar{padding:12px 14px}.hero,.layout{padding-left:14px;padding-right:14px}
+      .hero{padding-top:24px}
+      .grid.cols-4,.grid.cols-3,.grid.cols-2,.form-row{grid-template-columns:1fr}
+      h1{font-size:42px}
+      .top-actions .btn.ghost{display:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-mark">✚</div>
+        <div>BET PHARMA CONECTA<small>Tu farmacia, tus beneficios, en un solo lugar</small></div>
+      </div>
+      <div class="top-actions">
+        <button class="btn ghost" onclick="App.openCustomerModal()">Mi cuenta</button>
+        <button class="btn primary" onclick="App.go('catalogo')">Ver productos</button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">Prototipo escalable · BET PHARMA</div>
+        <h1>El corazón digital de la relación con tus clientes.</h1>
+        <p class="lead">Fidelización, disponibilidad de productos, campañas según stock y temporada, y datos simples para decidir mejor.</p>
+        <div class="chips">
+          <span class="chip">Fidelización digital</span>
+          <span class="chip">Stock visible</span>
+          <span class="chip">Campañas inteligentes</span>
+          <span class="chip">Gestión medible</span>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <div>
+          <div class="heart">❤️</div>
+          <h3>BET PHARMA CONECTA</h3>
+          <p>Una plataforma web que complementa la atención presencial y puede evolucionar hacia delivery, reservas, pagos y multi-sucursal.</p>
+        </div>
+        <button class="btn primary" onclick="App.openCustomerModal()">Identificar cliente</button>
+      </aside>
+    </section>
+
+    <main class="layout">
+      <nav class="tabs">
+        <button class="tab active" data-view="inicio">Inicio</button>
+        <button class="tab" data-view="catalogo">Productos</button>
+        <button class="tab" data-view="beneficios">Beneficios</button>
+        <button class="tab" data-view="campanas">Campañas</button>
+        <button class="tab" data-view="gestion">Gestión</button>
+      </nav>
+
+      <section class="view active" id="inicio">
+        <div class="grid cols-4" id="homeMetrics"></div>
+        <div class="section-title">
+          <div><h2>Hoy en BET PHARMA</h2><p>Información útil para clientes y administración.</p></div>
+        </div>
+        <div class="grid cols-2">
+          <div class="card">
+            <h3>Campañas destacadas</h3>
+            <div id="homeCampaigns"></div>
+          </div>
+          <div class="card">
+            <h3>Alertas preventivas</h3>
+            <div id="homeAlerts"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="catalogo">
+        <div class="section-title">
+          <div><h2>Productos</h2><p>Disponibilidad visible y compra prototipo.</p></div>
+          <div style="min-width:240px">
+            <input id="productSearch" placeholder="Buscar producto..." style="width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px">
+          </div>
+        </div>
+        <div class="grid cols-3" id="productGrid"></div>
+        <div class="section-title"><h2>Carrito</h2></div>
+        <div class="card" id="cartBox"></div>
+      </section>
+
+      <section class="view" id="beneficios">
+        <div class="section-title">
+          <div><h2>Fidelización</h2><p>Clientes identificados, recompra y beneficios medibles.</p></div>
+          <button class="btn primary" onclick="App.openCustomerModal()">Buscar / registrar cliente</button>
+        </div>
+        <div id="loyaltyArea"></div>
+      </section>
+
+      <section class="view" id="campanas">
+        <div class="section-title">
+          <div><h2>Campañas inteligentes</h2><p>Promociones conectadas al stock y la temporada.</p></div>
+        </div>
+        <div class="grid cols-2">
+          <div class="card"><h3>Campañas activas</h3><div id="campaignList"></div></div>
+          <div class="card"><h3>Sugerencias automáticas</h3><div id="suggestionList"></div></div>
+        </div>
+      </section>
+
+      <section class="view" id="gestion">
+        <div class="section-title">
+          <div><h2>Panel de gestión</h2><p>Visión simple de los indicadores que sostienen el crecimiento.</p></div>
+          <button class="btn ghost" onclick="App.resetDemo()">Restablecer demo</button>
+        </div>
+        <div class="grid cols-4" id="dashboardMetrics"></div>
+
+        <div class="section-title"><h2>Control operativo</h2></div>
+        <div class="admin-grid">
+          <div class="card">
+            <h3>Alertas de inventario</h3>
+            <div id="adminAlerts"></div>
+          </div>
+          <div class="card">
+            <h3>Registrar / editar producto</h3>
+            <form id="productForm">
+              <div class="form-row">
+                <div class="field"><label>Nombre</label><input name="nombre" required></div>
+                <div class="field"><label>Categoría</label><input name="categoria" required></div>
+                <div class="field"><label>Precio</label><input name="precio" type="number" min="0" required></div>
+                <div class="field"><label>Stock</label><input name="stock" type="number" min="0" required></div>
+                <div class="field"><label>Stock mínimo</label><input name="stockMinimo" type="number" min="0" required></div>
+                <div class="field"><label>Vencimiento</label><input name="vencimiento" type="date"></div>
+                <div class="field"><label>Temporada</label>
+                  <select name="temporada">
+                    <option>Todo el año</option><option>Verano</option><option>Otoño</option><option>Invierno</option><option>Primavera</option>
+                  </select>
+                </div>
+              </div>
+              <button class="btn primary" style="margin-top:14px">Guardar producto</button>
+            </form>
+          </div>
+        </div>
+
+        <div class="section-title"><h2>Inventario actual</h2></div>
+        <div class="card table-wrap">
+          <table>
+            <thead><tr><th>Producto</th><th>Categoría</th><th>Stock</th><th>Mínimo</th><th>Vencimiento</th><th>Estado</th></tr></thead>
+            <tbody id="inventoryTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer>BET PHARMA CONECTA · Prototipo académico escalable para GitHub Pages</footer>
+  </div>
+
+  <div class="modal" id="customerModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <div><h3 style="margin:0">Cliente BET PHARMA</h3><div class="mini-note">Busca por RUT, teléfono o email. Si no existe, regístralo.</div></div>
+        <button class="close" onclick="App.closeCustomerModal()">×</button>
+      </div>
+      <div class="field">
+        <label>Buscar cliente</label>
+        <div style="display:flex;gap:8px">
+          <input id="customerQuery" placeholder="12.345.678-9 / +56 9... / correo">
+          <button class="btn primary" onclick="App.lookupCustomer()">Buscar</button>
+        </div>
+      </div>
+      <div id="customerSearchResult" style="margin-top:14px"></div>
+      <hr style="border:0;border-top:1px solid var(--line);margin:20px 0">
+      <form id="customerForm">
+        <h4>Nuevo cliente</h4>
+        <div class="form-row">
+          <div class="field"><label>Nombre</label><input name="nombre" required></div>
+          <div class="field"><label>RUT</label><input name="rut"></div>
+          <div class="field"><label>Teléfono</label><input name="telefono"></div>
+          <div class="field"><label>Email</label><input name="email" type="email"></div>
+        </div>
+        <label style="display:flex;gap:8px;margin:12px 0;font-size:12px;color:var(--muted)">
+          <input name="autorizado" type="checkbox" checked>
+          Autorizo el uso de mis datos para beneficios y comunicaciones comerciales.
+        </label>
+        <button class="btn primary">Guardar cliente</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
