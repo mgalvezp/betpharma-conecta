@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#d71920">
+  <title>BET PHARMA CONECTA</title>
+
+  <style>
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #f5f7fa;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .app-shell {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      background: #f5f7fa;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+      background: #ffffff;
+    }
+
+    .fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: #f5f7fa;
+      text-align: center;
+      color: #20242a;
+    }
+
+    .fallback-card {
+      max-width: 520px;
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 14px 35px rgba(15,23,42,.08);
+    }
+
+    .logo {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 16px;
+      border-radius: 16px;
+      background: #d71920;
+      color: #fff;
+      font-size: 26px;
+      font-weight: 900;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 28px;
+    }
+
+    p {
+      color: #6b7280;
+      line-height: 1.5;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      background: #d71920;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app-shell">
+
+    <iframe
+      id="betpharmaApp"
+      src="https://script.google.com/macros/s/AKfycbxAHDXcODK7TTedykyWjRAvne7vBBBXfM-2g5Ghm_6Zo5FSfwcTGiI5Hu1lFn16uF-Pdg/exec"
+      title="BET PHARMA CONECTA"
+      allow="clipboard-read; clipboard-write"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+
+    <div
+      class="fallback"
+      id="fallback"
+    >
+      <div class="fallback-card">
+
+        <div class="logo">
+          ✚
+        </div>
+
+        <h1>
+          BET PHARMA CONECTA
+        </h1>
+
+        <p>
+          No fue posible mostrar la aplicación dentro de esta página.
+          Puedes abrirla directamente desde Google Apps Script.
+        </p>
+
+        <a
+          href="https://script.google.com/macros/s/AKfycbxAHDXcODK7TTedykyWjRAvne7vBBBXfM-2g5Ghm_6Zo5FSfwcTGiI5Hu1lFn16uF-Pdg/exec"
+          target="_blank"
+          rel="noopener"
+        >
+          Abrir aplicación
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    const iframe =
+      document.getElementById(
+        'betpharmaApp'
+      );
+
+    const fallback =
+      document.getElementById(
+        'fallback'
+      );
+
+    let loaded = false;
+
+    iframe.addEventListener(
+      'load',
+      () => {
+        loaded = true;
+      }
+    );
+
+    setTimeout(
+      () => {
+        if (!loaded) {
+          iframe.style.display =
+            'none';
+
+          fallback.style.display =
+            'flex';
+        }
+      },
+      12000
+    );
+  </script>
+
+</body>
+</html>
