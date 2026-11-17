@@ -2,174 +2,4021 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#d71920">
 
-  <title>BET PHARMA CONECTA</title>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    BET PHARMA CONECTA
+  </title>
 
   <style>
+    :root {
+      --red: #d71920;
+      --red-dark: #aa1117;
+      --ink: #20242a;
+      --muted: #6b7280;
+      --bg: #f5f7fa;
+      --card: #ffffff;
+      --line: #e5e7eb;
+      --green: #11875d;
+      --amber: #b7791f;
+      --blue: #2463a8;
+      --purple: #7653a8;
+      --shadow:
+        0 14px 35px
+        rgba(15, 23, 42, .08);
+      --radius: 20px;
+    }
+
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
+
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .app {
       min-height: 100vh;
+    }
 
-      display: grid;
-      place-items: center;
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
 
-      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-      font-family: Arial, Helvetica, sans-serif;
+      padding:
+        14px
+        24px;
 
       background:
-        radial-gradient(
-          circle at top right,
-          rgba(215, 25, 32, 0.10),
-          transparent 35%
-        ),
-        #f5f7fa;
+        rgba(
+          255,
+          255,
+          255,
+          .95
+        );
 
-      color: #20242a;
+      backdrop-filter:
+        blur(12px);
+
+      border-bottom:
+        1px solid
+        var(--line);
     }
 
-    .card {
-      width: min(580px, 100%);
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
 
-      padding: 42px 32px;
-
-      background: #ffffff;
-
-      border: 1px solid #e5e7eb;
-      border-radius: 24px;
-
-      box-shadow:
-        0 18px 45px
-        rgba(15, 23, 42, 0.10);
-
-      text-align: center;
+      font-weight: 900;
     }
 
-    .logo {
-      width: 66px;
-      height: 66px;
-
-      margin: 0 auto 18px;
+    .brand-mark {
+      width: 42px;
+      height: 42px;
 
       display: grid;
       place-items: center;
 
-      border-radius: 18px;
+      border-radius: 13px;
 
-      background: #d71920;
+      background:
+        var(--red);
+
       color: white;
 
-      font-size: 30px;
-      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .brand small {
+      display: block;
+
+      color:
+        var(--muted);
+
+      font-size: 11px;
+
+      font-weight: 600;
+    }
+
+    .btn {
+      padding:
+        10px
+        14px;
+
+      border: 0;
+      border-radius: 12px;
+
+      background:
+        #eef2f7;
+
+      color:
+        var(--ink);
+
+      font-weight: 800;
+    }
+
+    .btn.primary {
+      background:
+        var(--red);
+
+      color: white;
+    }
+
+    .btn.primary:hover {
+      background:
+        var(--red-dark);
+    }
+
+    .btn.ghost {
+      border:
+        1px solid
+        var(--line);
+
+      background:
+        transparent;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .hero {
+      max-width:
+        1180px;
+
+      margin:
+        0 auto;
+
+      padding:
+        44px
+        24px
+        24px;
+
+      display: grid;
+
+      grid-template-columns:
+        1.2fr
+        .8fr;
+
+      gap: 24px;
+    }
+
+    .hero-main,
+    .hero-side,
+    .card {
+      background:
+        var(--card);
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius:
+        var(--radius);
+
+      box-shadow:
+        var(--shadow);
+    }
+
+    .hero-main {
+      padding: 34px;
+
+      position:
+        relative;
+
+      overflow:
+        hidden;
+    }
+
+    .hero-main::after {
+      content: '';
+
+      position:
+        absolute;
+
+      width: 260px;
+      height: 260px;
+
+      right: -100px;
+      top: -100px;
+
+      border-radius:
+        50%;
+
+      background:
+        rgba(
+          215,
+          25,
+          32,
+          .08
+        );
     }
 
     .eyebrow {
-      color: #d71920;
+      color:
+        var(--red);
 
-      font-weight: 900;
-      font-size: 12px;
+      text-transform:
+        uppercase;
 
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+      letter-spacing:
+        .08em;
+
+      font-size:
+        12px;
+
+      font-weight:
+        900;
     }
 
     h1 {
-      margin: 10px 0 12px;
+      max-width:
+        760px;
 
-      font-size: clamp(
-        34px,
-        7vw,
-        50px
-      );
+      margin:
+        14px 0
+        16px;
 
-      line-height: 1;
+      font-size:
+        clamp(
+          38px,
+          5vw,
+          66px
+        );
+
+      line-height:
+        .96;
     }
 
-    p {
-      max-width: 470px;
+    .lead {
+      max-width:
+        760px;
 
-      margin: 0 auto 24px;
+      color:
+        #4b5563;
 
-      color: #6b7280;
+      font-size:
+        18px;
 
-      line-height: 1.6;
+      line-height:
+        1.55;
     }
 
-    .button {
-      display: inline-block;
+    .chips {
+      display:
+        flex;
 
-      padding: 14px 22px;
+      flex-wrap:
+        wrap;
 
-      border-radius: 14px;
+      gap: 8px;
 
-      background: #d71920;
-      color: #ffffff;
+      margin-top:
+        24px;
+    }
 
-      text-decoration: none;
+    .chip {
+      padding:
+        9px
+        12px;
 
-      font-weight: 900;
+      border-radius:
+        999px;
+
+      background:
+        #fff2f2;
+
+      color:
+        #a4171d;
+
+      font-size:
+        13px;
+
+      font-weight:
+        800;
+    }
+
+    .hero-side {
+      padding:
+        26px;
+
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      justify-content:
+        space-between;
+    }
+
+    .heart {
+      width: 140px;
+      height: 140px;
+
+      margin:
+        8px auto
+        18px;
+
+      display:
+        grid;
+
+      place-items:
+        center;
+
+      border-radius:
+        50%;
+
+      background:
+        linear-gradient(
+          135deg,
+          #fff2f2,
+          #ffe1e3
+        );
+
+      font-size:
+        72px;
+    }
+
+    .hero-side p {
+      color:
+        var(--muted);
+
+      line-height:
+        1.5;
+    }
+
+    .layout {
+      max-width:
+        1180px;
+
+      margin:
+        0 auto;
+
+      padding:
+        0
+        24px
+        50px;
+    }
+
+    .tabs {
+      display:
+        flex;
+
+      gap: 8px;
+
+      overflow-x:
+        auto;
+
+      padding:
+        10px 0
+        18px;
+    }
+
+    .tab {
+      white-space:
+        nowrap;
+
+      padding:
+        10px
+        15px;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius:
+        999px;
+
+      background:
+        white;
+
+      color:
+        #4b5563;
+
+      font-weight:
+        800;
+    }
+
+    .tab.active {
+      border-color:
+        var(--ink);
+
+      background:
+        var(--ink);
+
+      color:
+        white;
+    }
+
+    .view {
+      display:
+        none;
+    }
+
+    .view.active {
+      display:
+        block;
+    }
+
+    .grid {
+      display:
+        grid;
+
+      gap:
+        16px;
+    }
+
+    .grid.cols-4 {
+      grid-template-columns:
+        repeat(
+          4,
+          1fr
+        );
+    }
+
+    .grid.cols-3 {
+      grid-template-columns:
+        repeat(
+          3,
+          1fr
+        );
+    }
+
+    .grid.cols-2 {
+      grid-template-columns:
+        repeat(
+          2,
+          1fr
+        );
+    }
+
+    .card {
+      padding:
+        22px;
+    }
+
+    .card p {
+      color:
+        var(--muted);
+
+      line-height:
+        1.5;
+    }
+
+    .metric {
+      font-size:
+        30px;
+
+      font-weight:
+        950;
+    }
+
+    .metric-label {
+      margin-top:
+        4px;
+
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+
+      font-weight:
+        700;
+    }
+
+    .section-title {
+      display:
+        flex;
+
+      align-items:
+        end;
+
+      justify-content:
+        space-between;
+
+      gap:
+        18px;
+
+      margin:
+        22px 0
+        14px;
+    }
+
+    .section-title h2 {
+      margin: 0;
+
+      font-size:
+        28px;
+    }
+
+    .section-title p {
+      margin: 0;
+
+      color:
+        var(--muted);
+    }
+
+    .product-card {
+      display:
+        flex;
+
+      min-height:
+        220px;
+
+      flex-direction:
+        column;
+    }
+
+    .product-top {
+      display:
+        flex;
+
+      justify-content:
+        space-between;
+
+      gap:
+        10px;
+    }
+
+    .tag {
+      padding:
+        6px
+        8px;
+
+      border-radius:
+        999px;
+
+      background:
+        #eef2f7;
+
+      color:
+        #4b5563;
+
+      font-size:
+        11px;
+
+      font-weight:
+        900;
+    }
+
+    .tag.ok {
+      background:
+        #e8f7f0;
+
+      color:
+        var(--green);
+    }
+
+    .tag.warning {
+      background:
+        #fff7df;
+
+      color:
+        var(--amber);
+    }
+
+    .tag.critical {
+      background:
+        #ffe6e8;
+
+      color:
+        var(--red);
+    }
+
+    .price {
+      margin-top:
+        auto;
+
+      font-size:
+        24px;
+
+      font-weight:
+        950;
+    }
+
+    .stock {
+      margin:
+        8px 0;
+
+      color:
+        var(--muted);
+
+      font-size:
+        13px;
+    }
+
+    .form-row {
+      display:
+        grid;
+
+      grid-template-columns:
+        repeat(
+          2,
+          1fr
+        );
+
+      gap:
+        12px;
+    }
+
+    .field {
+      display:
+        flex;
+
+      flex-direction:
+        column;
+
+      gap:
+        6px;
+    }
+
+    .field label {
+      color:
+        #4b5563;
+
+      font-size:
+        12px;
+
+      font-weight:
+        900;
+    }
+
+    .field input,
+    .field select {
+      width:
+        100%;
+
+      padding:
+        12px
+        13px;
+
+      outline:
+        none;
+
+      border:
+        1px solid
+        var(--line);
+
+      border-radius:
+        12px;
+
+      background:
+        white;
+    }
+
+    .loyalty {
+      display:
+        grid;
+
+      grid-template-columns:
+        .9fr
+        1.1fr;
+
+      gap:
+        16px;
+    }
+
+    .loyalty-card {
+      position:
+        relative;
+
+      min-height:
+        260px;
+
+      padding:
+        26px;
+
+      overflow:
+        hidden;
+
+      border-radius:
+        22px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #1f2937,
+          #111827
+        );
+
+      color:
+        white;
+    }
+
+    .points {
+      font-size:
+        52px;
+
+      font-weight:
+        950;
+    }
+
+    .progress {
+      height:
+        10px;
+
+      margin:
+        16px 0
+        8px;
+
+      overflow:
+        hidden;
+
+      border-radius:
+        999px;
+
+      background:
+        rgba(
+          255,
+          255,
+          255,
+          .16
+        );
+    }
+
+    .progress span {
+      display:
+        block;
+
+      height:
+        100%;
+
+      border-radius:
+        inherit;
+
+      background:
+        var(--red);
+    }
+
+    .campaign {
+      padding-left:
+        16px;
+
+      border-left:
+        5px solid
+        var(--red);
+    }
+
+    .campaign h4 {
+      margin:
+        0 0
+        5px;
+    }
+
+    .campaign small {
+      color:
+        var(--muted);
+    }
+
+    .alert {
+      display:
+        flex;
+
+      align-items:
+        flex-start;
+
+      justify-content:
+        space-between;
+
+      gap:
+        12px;
+
+      padding:
+        13px 0;
+
+      border-bottom:
+        1px solid
+        var(--line);
+    }
+
+    .alert:last-child {
+      border: 0;
+    }
+
+    .alert strong {
+      display:
+        block;
+    }
+
+    .alert small {
+      color:
+        var(--muted);
+    }
+
+    .pill {
+      padding:
+        5px
+        8px;
+
+      border-radius:
+        999px;
+
+      font-size:
+        11px;
+
+      font-weight:
+        900;
+    }
+
+    .pill.red {
+      background:
+        #ffe6e8;
+
+      color:
+        var(--red);
+    }
+
+    .pill.amber {
+      background:
+        #fff7df;
+
+      color:
+        var(--amber);
+    }
+
+    .pill.green {
+      background:
+        #e8f7f0;
+
+      color:
+        var(--green);
+    }
+
+    .admin-grid {
+      display:
+        grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      gap:
+        16px;
+    }
+
+    .table-wrap {
+      overflow:
+        auto;
+    }
+
+    table {
+      width:
+        100%;
+
+      border-collapse:
+        collapse;
+
+      font-size:
+        13px;
+    }
+
+    th,
+    td {
+      padding:
+        11px
+        10px;
+
+      text-align:
+        left;
+
+      border-bottom:
+        1px solid
+        var(--line);
+    }
+
+    th {
+      color:
+        var(--muted);
+
+      font-size:
+        11px;
+
+      text-transform:
+        uppercase;
+
+      letter-spacing:
+        .04em;
+    }
+
+    .cart-line {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        10px;
+
+      padding:
+        10px 0;
+
+      border-bottom:
+        1px solid
+        var(--line);
+    }
+
+    .qty {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      gap:
+        6px;
+    }
+
+    .qty button {
+      width:
+        28px;
+
+      height:
+        28px;
+
+      border:
+        0;
+
+      border-radius:
+        8px;
+
+      background:
+        #eef2f7;
+
+      font-weight:
+        900;
+    }
+
+    .empty {
+      padding:
+        30px;
+
+      text-align:
+        center;
+
+      color:
+        var(--muted);
+    }
+
+    .mini-note {
+      color:
+        var(--muted);
+
+      font-size:
+        12px;
+
+      line-height:
+        1.45;
+    }
+
+    .modal {
+      position:
+        fixed;
+
+      inset:
+        0;
+
+      z-index:
+        80;
+
+      display:
+        none;
+
+      place-items:
+        center;
+
+      padding:
+        20px;
+
+      background:
+        rgba(
+          15,
+          23,
+          42,
+          .48
+        );
+    }
+
+    .modal.show {
+      display:
+        grid;
+    }
+
+    .modal-box {
+      width:
+        min(
+          620px,
+          100%
+        );
+
+      max-height:
+        90vh;
+
+      overflow:
+        auto;
+
+      padding:
+        24px;
+
+      border-radius:
+        22px;
+
+      background:
+        white;
 
       box-shadow:
-        0 8px 20px
-        rgba(215, 25, 32, 0.22);
+        var(--shadow);
     }
 
-    .button:hover {
-      background: #aa1117;
+    .modal-head {
+      display:
+        flex;
+
+      align-items:
+        center;
+
+      justify-content:
+        space-between;
+
+      gap:
+        10px;
+
+      margin-bottom:
+        16px;
     }
 
-    .note {
-      margin-top: 20px;
+    .close {
+      width:
+        36px;
 
-      color: #9ca3af;
+      height:
+        36px;
 
-      font-size: 12px;
+      border:
+        0;
+
+      border-radius:
+        10px;
+
+      background:
+        #eef2f7;
+
+      font-size:
+        20px;
+    }
+
+    .toast {
+      position:
+        fixed;
+
+      right:
+        20px;
+
+      bottom:
+        20px;
+
+      z-index:
+        100;
+
+      padding:
+        13px
+        16px;
+
+      border-radius:
+        12px;
+
+      background:
+        #111827;
+
+      color:
+        white;
+
+      opacity:
+        0;
+
+      pointer-events:
+        none;
+
+      transform:
+        translateY(
+          20px
+        );
+
+      transition:
+        .25s;
+
+      box-shadow:
+        var(--shadow);
+    }
+
+    .toast.show {
+      opacity:
+        1;
+
+      transform:
+        translateY(0);
+    }
+
+    footer {
+      padding:
+        24px;
+
+      text-align:
+        center;
+
+      color:
+        var(--muted);
+
+      font-size:
+        12px;
+    }
+
+    @media (
+      max-width:
+      900px
+    ) {
+      .hero,
+      .loyalty,
+      .admin-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      .grid.cols-4,
+      .grid.cols-3 {
+        grid-template-columns:
+          repeat(
+            2,
+            1fr
+          );
+      }
+    }
+
+    @media (
+      max-width:
+      600px
+    ) {
+      .topbar {
+        padding:
+          12px
+          14px;
+      }
+
+      .hero,
+      .layout {
+        padding-left:
+          14px;
+
+        padding-right:
+          14px;
+      }
+
+      .hero {
+        padding-top:
+          24px;
+      }
+
+      .grid.cols-4,
+      .grid.cols-3,
+      .grid.cols-2,
+      .form-row {
+        grid-template-columns:
+          1fr;
+      }
+
+      h1 {
+        font-size:
+          42px;
+      }
+
+      .top-actions
+      .btn.ghost {
+        display:
+          none;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <main class="card">
+  <div class="app">
 
-    <div class="logo">
-      ✚
+    <header class="topbar">
+
+      <div class="brand">
+
+        <div class="brand-mark">
+          ✚
+        </div>
+
+        <div>
+          BET PHARMA CONECTA
+
+          <small>
+            Tu farmacia,
+            tus beneficios,
+            en un solo lugar
+          </small>
+        </div>
+
+      </div>
+
+      <div class="top-actions">
+
+        <button
+          class="btn ghost"
+          onclick="
+            App.openCustomerModal()
+          "
+        >
+          Mi cuenta
+        </button>
+
+        <button
+          class="btn primary"
+          onclick="
+            App.go('catalogo')
+          "
+        >
+          Ver productos
+        </button>
+
+      </div>
+
+    </header>
+
+    <section class="hero">
+
+      <div class="hero-main">
+
+        <div class="eyebrow">
+          BET PHARMA · Prototipo digital
+        </div>
+
+        <h1>
+          El corazón digital
+          de la relación
+          con tus clientes.
+        </h1>
+
+        <p class="lead">
+          Fidelización,
+          disponibilidad de productos,
+          campañas según stock
+          y temporada,
+          y datos simples
+          para decidir mejor.
+        </p>
+
+        <div class="chips">
+
+          <span class="chip">
+            Fidelización digital
+          </span>
+
+          <span class="chip">
+            Stock visible
+          </span>
+
+          <span class="chip">
+            Campañas inteligentes
+          </span>
+
+          <span class="chip">
+            Gestión medible
+          </span>
+
+        </div>
+
+      </div>
+
+      <aside class="hero-side">
+
+        <div>
+
+          <div class="heart">
+            ❤️
+          </div>
+
+          <h3>
+            BET PHARMA CONECTA
+          </h3>
+
+          <p>
+            Plataforma web
+            que complementa
+            la atención presencial
+            y puede evolucionar
+            hacia reservas,
+            delivery,
+            pagos
+            y multi-sucursal.
+          </p>
+
+        </div>
+
+        <button
+          class="btn primary"
+          onclick="
+            App.openCustomerModal()
+          "
+        >
+          Identificar cliente
+        </button>
+
+      </aside>
+
+    </section>
+
+    <main class="layout">
+
+      <nav class="tabs">
+
+        <button
+          class="tab active"
+          data-view="inicio"
+        >
+          Inicio
+        </button>
+
+        <button
+          class="tab"
+          data-view="catalogo"
+        >
+          Productos
+        </button>
+
+        <button
+          class="tab"
+          data-view="beneficios"
+        >
+          Beneficios
+        </button>
+
+        <button
+          class="tab"
+          data-view="campanas"
+        >
+          Campañas
+        </button>
+
+        <button
+          class="tab"
+          data-view="gestion"
+        >
+          Gestión
+        </button>
+
+      </nav>
+
+      <section
+        class="view active"
+        id="inicio"
+      >
+
+        <div
+          class="grid cols-4"
+          id="homeMetrics"
+        ></div>
+
+        <div class="section-title">
+
+          <div>
+
+            <h2>
+              Hoy en BET PHARMA
+            </h2>
+
+            <p>
+              Información útil
+              para clientes
+              y administración.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="grid cols-2">
+
+          <div class="card">
+
+            <h3>
+              Campañas destacadas
+            </h3>
+
+            <div
+              id="homeCampaigns"
+            ></div>
+
+          </div>
+
+          <div class="card">
+
+            <h3>
+              Alertas preventivas
+            </h3>
+
+            <div
+              id="homeAlerts"
+            ></div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <section
+        class="view"
+        id="catalogo"
+      >
+
+        <div class="section-title">
+
+          <div>
+
+            <h2>
+              Productos
+            </h2>
+
+            <p>
+              Disponibilidad visible
+              y venta prototipo.
+            </p>
+
+          </div>
+
+          <div
+            style="
+              min-width:240px
+            "
+          >
+
+            <input
+              id="productSearch"
+              placeholder="Buscar producto..."
+              style="
+                width:100%;
+                padding:12px 14px;
+                border:1px solid var(--line);
+                border-radius:12px
+              "
+            >
+
+          </div>
+
+        </div>
+
+        <div
+          class="grid cols-3"
+          id="productGrid"
+        ></div>
+
+        <div class="section-title">
+
+          <h2>
+            Carrito
+          </h2>
+
+        </div>
+
+        <div
+          class="card"
+          id="cartBox"
+        ></div>
+
+      </section>
+
+      <section
+        class="view"
+        id="beneficios"
+      >
+
+        <div class="section-title">
+
+          <div>
+
+            <h2>
+              Fidelización
+            </h2>
+
+            <p>
+              Clientes identificados,
+              recompra
+              y beneficios medibles.
+            </p>
+
+          </div>
+
+          <button
+            class="btn primary"
+            onclick="
+              App.openCustomerModal()
+            "
+          >
+            Buscar / registrar cliente
+          </button>
+
+        </div>
+
+        <div
+          id="loyaltyArea"
+        ></div>
+
+      </section>
+
+      <section
+        class="view"
+        id="campanas"
+      >
+
+        <div class="section-title">
+
+          <div>
+
+            <h2>
+              Campañas inteligentes
+            </h2>
+
+            <p>
+              Promociones conectadas
+              al stock
+              y la temporada.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div class="grid cols-2">
+
+          <div class="card">
+
+            <h3>
+              Campañas activas
+            </h3>
+
+            <div
+              id="campaignList"
+            ></div>
+
+          </div>
+
+          <div class="card">
+
+            <h3>
+              Sugerencias automáticas
+            </h3>
+
+            <div
+              id="suggestionList"
+            ></div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <section
+        class="view"
+        id="gestion"
+      >
+
+        <div class="section-title">
+
+          <div>
+
+            <h2>
+              Panel de gestión
+            </h2>
+
+            <p>
+              Indicadores simples
+              para apoyar
+              decisiones comerciales.
+            </p>
+
+          </div>
+
+        </div>
+
+        <div
+          class="grid cols-4"
+          id="dashboardMetrics"
+        ></div>
+
+        <div class="section-title">
+
+          <h2>
+            Control operativo
+          </h2>
+
+        </div>
+
+        <div class="admin-grid">
+
+          <div class="card">
+
+            <h3>
+              Alertas de inventario
+            </h3>
+
+            <div
+              id="adminAlerts"
+            ></div>
+
+          </div>
+
+          <div class="card">
+
+            <h3>
+              Registrar producto
+            </h3>
+
+            <form
+              id="productForm"
+            >
+
+              <div class="form-row">
+
+                <div class="field">
+
+                  <label>
+                    Nombre
+                  </label>
+
+                  <input
+                    name="nombre"
+                    required
+                  >
+
+                </div>
+
+                <div class="field">
+
+                  <label>
+                    Categoría
+                  </label>
+
+                  <input
+                    name="categoria"
+                    required
+                  >
+
+                </div>
+
+                <div class="field">
+
+                  <label>
+                    Precio
+                  </label>
+
+                  <input
+                    name="precio"
+                    type="number"
+                    min="0"
+                    required
+                  >
+
+                </div>
+
+                <div class="field">
+
+                  <label>
+                    Stock
+                  </label>
+
+                  <input
+                    name="stock"
+                    type="number"
+                    min="0"
+                    required
+                  >
+
+                </div>
+
+                <div class="field">
+
+                  <label>
+                    Stock mínimo
+                  </label>
+
+                  <input
+                    name="stockMinimo"
+                    type="number"
+                    min="0"
+                    required
+                  >
+
+                </div>
+
+                <div class="field">
+
+                  <label>
+                    Vencimiento
+                  </label>
+
+                  <input
+                    name="vencimiento"
+                    type="date"
+                  >
+
+                </div>
+
+                <div class="field">
+
+                  <label>
+                    Temporada
+                  </label>
+
+                  <select
+                    name="temporada"
+                  >
+
+                    <option>
+                      Todo el año
+                    </option>
+
+                    <option>
+                      Verano
+                    </option>
+
+                    <option>
+                      Otoño
+                    </option>
+
+                    <option>
+                      Invierno
+                    </option>
+
+                    <option>
+                      Primavera
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+              <button
+                class="btn primary"
+                style="
+                  margin-top:14px
+                "
+              >
+                Guardar producto
+              </button>
+
+            </form>
+
+          </div>
+
+        </div>
+
+        <div class="section-title">
+
+          <h2>
+            Inventario actual
+          </h2>
+
+        </div>
+
+        <div
+          class="card table-wrap"
+        >
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>
+                  Producto
+                </th>
+
+                <th>
+                  Categoría
+                </th>
+
+                <th>
+                  Stock
+                </th>
+
+                <th>
+                  Mínimo
+                </th>
+
+                <th>
+                  Vencimiento
+                </th>
+
+                <th>
+                  Estado
+                </th>
+
+              </tr>
+
+            </thead>
+
+            <tbody
+              id="inventoryTable"
+            ></tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer>
+      BET PHARMA CONECTA ·
+      Prototipo académico
+      en Google Apps Script
+    </footer>
+
+  </div>
+
+  <div
+    class="modal"
+    id="customerModal"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-head">
+
+        <div>
+
+          <h3
+            style="
+              margin:0
+            "
+          >
+            Cliente BET PHARMA
+          </h3>
+
+          <div class="mini-note">
+            Busca por RUT,
+            teléfono
+            o email.
+          </div>
+
+        </div>
+
+        <button
+          class="close"
+          onclick="
+            App.closeCustomerModal()
+          "
+        >
+          ×
+        </button>
+
+      </div>
+
+      <div class="field">
+
+        <label>
+          Buscar cliente
+        </label>
+
+        <div
+          style="
+            display:flex;
+            gap:8px
+          "
+        >
+
+          <input
+            id="customerQuery"
+            placeholder="RUT / teléfono / correo"
+          >
+
+          <button
+            class="btn primary"
+            onclick="
+              App.lookupCustomer()
+            "
+          >
+            Buscar
+          </button>
+
+        </div>
+
+      </div>
+
+      <div
+        id="customerSearchResult"
+        style="
+          margin-top:14px
+        "
+      ></div>
+
+      <hr
+        style="
+          border:0;
+          border-top:
+            1px solid
+            var(--line);
+          margin:
+            20px 0
+        "
+      >
+
+      <form
+        id="customerForm"
+      >
+
+        <h4>
+          Nuevo cliente
+        </h4>
+
+        <div class="form-row">
+
+          <div class="field">
+
+            <label>
+              Nombre
+            </label>
+
+            <input
+              name="nombre"
+              required
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              RUT
+            </label>
+
+            <input
+              name="rut"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Teléfono
+            </label>
+
+            <input
+              name="telefono"
+            >
+
+          </div>
+
+          <div class="field">
+
+            <label>
+              Email
+            </label>
+
+            <input
+              name="email"
+              type="email"
+            >
+
+          </div>
+
+        </div>
+
+        <label
+          style="
+            display:flex;
+            gap:8px;
+            margin:
+              12px 0;
+            font-size:
+              12px;
+            color:
+              var(--muted)
+          "
+        >
+
+          <input
+            name="autorizado"
+            type="checkbox"
+            checked
+          >
+
+          Autorizo
+          el uso de datos
+          para beneficios
+          y comunicaciones comerciales.
+
+        </label>
+
+        <button
+          class="btn primary"
+        >
+          Guardar cliente
+        </button>
+
+      </form>
+
     </div>
 
-    <div class="eyebrow">
-      BET PHARMA
-    </div>
+  </div>
 
-    <h1>
-      CONECTA
-    </h1>
+  <div
+    class="toast"
+    id="toast"
+  ></div>
 
-    <p>
-      Fidelización, productos,
-      campañas inteligentes
-      y gestión comercial
-      en un solo lugar.
-    </p>
+  <script>
+    const State = {
+      data: {
+        products: [],
+        customers: [],
+        campaigns: [],
+        sales: []
+      },
 
-    <a
-      class="button"
-      href="https://script.google.com/macros/s/AKfycbxAHDXcODK7TTedykyWjRAvne7vBBBXfM-2g5Ghm_6Zo5FSfwcTGiI5Hu1lFn16uF-Pdg/exec"
-    >
-      Entrar a BET PHARMA CONECTA
-    </a>
+      config: {
+        rewardThreshold: 20,
+        rewardAmount: 3000,
+        expiryWarningDays: 90
+      },
 
-    <div class="note">
-      La aplicación se ejecuta mediante
-      Google Apps Script.
-    </div>
+      activeCustomer: null,
+      cart: []
+    };
 
-  </main>
+    const API_URL =
+      'https://script.google.com/macros/s/AKfycbxAHDXcODK7TTedykyWjRAvne7vBBBXfM-2g5Ghm_6Zo5FSfwcTGiI5Hu1lFn16uF-Pdg/exec';
+
+    const Server = {
+      call(name, payload) {
+        return new Promise(
+          (resolve, reject) => {
+
+            const callbackName =
+              '__betpharma_' +
+              Date.now() +
+              '_' +
+              Math.random()
+                .toString(36)
+                .slice(2);
+
+            const script =
+              document
+                .createElement(
+                  'script'
+                );
+
+            const timeout =
+              setTimeout(
+                () => {
+                  cleanup();
+
+                  reject(
+                    new Error(
+                      'Tiempo de conexión agotado.'
+                    )
+                  );
+                },
+                20000
+              );
+
+            const cleanup = () => {
+              clearTimeout(
+                timeout
+              );
+
+              if (
+                script.parentNode
+              ) {
+                script.parentNode
+                  .removeChild(
+                    script
+                  );
+              }
+
+              try {
+                delete window[
+                  callbackName
+                ];
+              } catch (error) {
+                window[
+                  callbackName
+                ] = undefined;
+              }
+            };
+
+            window[
+              callbackName
+            ] = response => {
+              cleanup();
+
+              if (
+                !response ||
+                response.ok !== true
+              ) {
+                reject(
+                  new Error(
+                    response &&
+                    response.error
+                      ? response.error
+                      : 'Error del servidor.'
+                  )
+                );
+
+                return;
+              }
+
+              resolve(
+                response.data
+              );
+            };
+
+            const params =
+              new URLSearchParams();
+
+            params.set(
+              'api',
+              '1'
+            );
+
+            params.set(
+              'action',
+              name
+            );
+
+            params.set(
+              'callback',
+              callbackName
+            );
+
+            params.set(
+              '_',
+              String(
+                Date.now()
+              )
+            );
+
+            if (
+              payload !== undefined
+            ) {
+              params.set(
+                'payload',
+                JSON.stringify(
+                  payload
+                )
+              );
+            }
+
+            script.onerror =
+              () => {
+                cleanup();
+
+                reject(
+                  new Error(
+                    'No fue posible conectar con Apps Script.'
+                  )
+                );
+              };
+
+            script.src =
+              API_URL +
+              '?' +
+              params.toString();
+
+            document.head
+              .appendChild(
+                script
+              );
+          }
+        );
+      },
+
+      bootstrap() {
+        return this.call(
+          'getBootstrap'
+        );
+      },
+
+      findCustomer(query) {
+        return this.call(
+          'findCustomer',
+          { query }
+        );
+      },
+
+      saveCustomer(data) {
+        return this.call(
+          'saveCustomer',
+          data
+        );
+      },
+
+      saveProduct(data) {
+        return this.call(
+          'saveProduct',
+          data
+        );
+      },
+
+      saveCampaign(data) {
+        return this.call(
+          'saveCampaign',
+          data
+        );
+      },
+
+      registerSale(data) {
+        return this.call(
+          'registerSale',
+          data
+        );
+      }
+    };
+
+    const Utils = {
+      money(value) {
+        return (
+          '$' +
+          Number(
+            value || 0
+          ).toLocaleString(
+            'es-CL'
+          )
+        );
+      },
+
+      date(value) {
+        if (!value) {
+          return '—';
+        }
+
+        const date =
+          new Date(
+            String(value)
+              .slice(0, 10) +
+            'T12:00:00'
+          );
+
+        return isNaN(date)
+          ? value
+          : date.toLocaleDateString(
+              'es-CL'
+            );
+      },
+
+      normalize(value) {
+        return String(
+          value || ''
+        )
+          .toLowerCase()
+          .replace(
+            /\s/g,
+            ''
+          )
+          .replace(
+            /[.-]/g,
+            ''
+          );
+      },
+
+      daysUntil(value) {
+        if (!value) {
+          return 9999;
+        }
+
+        const today =
+          new Date();
+
+        today.setHours(
+          0,
+          0,
+          0,
+          0
+        );
+
+        const date =
+          new Date(
+            value +
+            'T12:00:00'
+          );
+
+        date.setHours(
+          0,
+          0,
+          0,
+          0
+        );
+
+        return Math.ceil(
+          (
+            date -
+            today
+          ) /
+          86400000
+        );
+      }
+    };
+
+    const Logic = {
+      productStatus(product) {
+        if (
+          Number(
+            product.stock
+          ) === 0
+        ) {
+          return 'critical';
+        }
+
+        if (
+          Number(
+            product.stock
+          ) <=
+          Number(
+            product.stockMinimo
+          )
+        ) {
+          return 'warning';
+        }
+
+        const days =
+          Utils.daysUntil(
+            product.vencimiento
+          );
+
+        if (
+          days <= 30
+        ) {
+          return 'critical';
+        }
+
+        if (
+          days <=
+          State.config
+            .expiryWarningDays
+        ) {
+          return 'warning';
+        }
+
+        return 'ok';
+      },
+
+      dashboard() {
+        return (
+          State.bootstrap
+            ?.dashboard ||
+          {
+            customers: 0,
+            activeProducts: 0,
+            revenue30: 0,
+            sales30: 0,
+            avgTicket: 0,
+            repurchaseRate: 0,
+            lowStock: 0,
+            expiring: 0
+          }
+        );
+      }
+    };
+
+    const UI = {
+      toast(message) {
+        const element =
+          document.getElementById(
+            'toast'
+          );
+
+        element.textContent =
+          message;
+
+        element.classList.add(
+          'show'
+        );
+
+        clearTimeout(
+          this.toastTimer
+        );
+
+        this.toastTimer =
+          setTimeout(
+            () =>
+              element
+                .classList
+                .remove('show'),
+            2600
+          );
+      },
+
+      metrics() {
+        const data =
+          Logic.dashboard();
+
+        document.getElementById(
+          'homeMetrics'
+        ).innerHTML = [
+          [
+            'Clientes registrados',
+            data.customers
+          ],
+
+          [
+            'Productos activos',
+            data.activeProducts
+          ],
+
+          [
+            'Alertas de stock',
+            data.lowStock
+          ],
+
+          [
+            'Próximos a vencer',
+            data.expiring
+          ]
+        ]
+          .map(
+            ([label, value]) => `
+              <div class="card">
+
+                <div class="metric">
+                  ${value}
+                </div>
+
+                <div
+                  class="metric-label"
+                >
+                  ${label}
+                </div>
+
+              </div>
+            `
+          )
+          .join('');
+
+        document.getElementById(
+          'dashboardMetrics'
+        ).innerHTML = [
+          [
+            'Ventas 30 días',
+            Utils.money(
+              data.revenue30
+            )
+          ],
+
+          [
+            'N° ventas',
+            data.sales30
+          ],
+
+          [
+            'Ticket promedio',
+            Utils.money(
+              data.avgTicket
+            )
+          ],
+
+          [
+            'Recompra',
+            data.repurchaseRate +
+            '%'
+          ]
+        ]
+          .map(
+            ([label, value]) => `
+              <div class="card">
+
+                <div class="metric">
+                  ${value}
+                </div>
+
+                <div
+                  class="metric-label"
+                >
+                  ${label}
+                </div>
+
+              </div>
+            `
+          )
+          .join('');
+      },
+
+      campaigns() {
+        const campaigns =
+          State.data.campaigns ||
+          [];
+
+        const html =
+          campaigns.length
+            ? campaigns
+                .map(
+                  campaign => `
+                    <div
+                      class="campaign"
+                      style="
+                        margin-bottom:14px
+                      "
+                    >
+
+                      <h4>
+                        ${campaign.titulo}
+
+                        <span
+                          class="pill red"
+                        >
+                          ${campaign.descuento}%
+                        </span>
+                      </h4>
+
+                      <small>
+                        ${campaign.segmento}
+                      </small>
+
+                      <p>
+                        ${campaign.descripcion}
+                      </p>
+
+                    </div>
+                  `
+                )
+                .join('')
+            : `
+              <div class="empty">
+                Sin campañas activas.
+              </div>
+            `;
+
+        document.getElementById(
+          'campaignList'
+        ).innerHTML =
+          html;
+
+        document.getElementById(
+          'homeCampaigns'
+        ).innerHTML =
+          html;
+      },
+
+      alerts() {
+        const alerts =
+          State.bootstrap
+            ?.alerts ||
+          [];
+
+        const html =
+          alerts.length
+            ? alerts
+                .slice(0, 8)
+                .map(
+                  alert => `
+                    <div class="alert">
+
+                      <div>
+
+                        <strong>
+                          ${alert.product}
+                        </strong>
+
+                        <small>
+                          ${alert.title}
+                          ·
+                          ${alert.detail}
+                        </small>
+
+                      </div>
+
+                      <span
+                        class="pill ${
+                          alert.level ===
+                          'critical'
+                            ? 'red'
+                            : 'amber'
+                        }"
+                      >
+                        ${
+                          alert.type ===
+                          'stock'
+                            ? 'Stock'
+                            : 'Vence'
+                        }
+                      </span>
+
+                    </div>
+                  `
+                )
+                .join('')
+            : `
+              <div class="empty">
+                Sin alertas críticas.
+              </div>
+            `;
+
+        document.getElementById(
+          'homeAlerts'
+        ).innerHTML =
+          html;
+
+        document.getElementById(
+          'adminAlerts'
+        ).innerHTML =
+          html;
+      },
+
+      products(filter = '') {
+        const query =
+          Utils.normalize(
+            filter
+          );
+
+        const products =
+          State.data.products.filter(
+            product =>
+              !query ||
+              Utils.normalize(
+                product.nombre +
+                ' ' +
+                product.categoria
+              ).includes(
+                query
+              )
+          );
+
+        document.getElementById(
+          'productGrid'
+        ).innerHTML =
+          products
+            .map(product => {
+              const status =
+                Logic.productStatus(
+                  product
+                );
+
+              return `
+                <article
+                  class="
+                    card
+                    product-card
+                  "
+                >
+
+                  <div
+                    class="
+                      product-top
+                    "
+                  >
+
+                    <span
+                      class="tag"
+                    >
+                      ${product.categoria}
+                    </span>
+
+                    <span
+                      class="
+                        tag
+                        ${status}
+                      "
+                    >
+                      ${
+                        status === 'ok'
+                          ? 'Disponible'
+                          : status ===
+                            'warning'
+                          ? 'Revisar'
+                          : 'Crítico'
+                      }
+                    </span>
+
+                  </div>
+
+                  <h3>
+                    ${product.nombre}
+                  </h3>
+
+                  <p>
+                    ${product.temporada}
+                    · vence
+                    ${Utils.date(
+                      product.vencimiento
+                    )}
+                  </p>
+
+                  <div
+                    class="stock"
+                  >
+                    Stock:
+                    <b>
+                      ${product.stock}
+                    </b>
+                  </div>
+
+                  <div
+                    class="price"
+                  >
+                    ${Utils.money(
+                      product.precio
+                    )}
+                  </div>
+
+                  <button
+                    class="
+                      btn
+                      primary
+                    "
+                    ${
+                      Number(
+                        product.stock
+                      ) <= 0
+                        ? 'disabled'
+                        : ''
+                    }
+                    onclick="
+                      App.addToCart(
+                        '${product.id}'
+                      )
+                    "
+                  >
+                    Agregar
+                  </button>
+
+                </article>
+              `;
+            })
+            .join('');
+      },
+
+      cart() {
+        const lines =
+          State.cart
+            .map(item => {
+              const product =
+                State.data.products
+                  .find(
+                    product =>
+                      String(
+                        product.id
+                      ) ===
+                      String(
+                        item.productId
+                      )
+                  );
+
+              if (!product) {
+                return '';
+              }
+
+              return `
+                <div
+                  class="cart-line"
+                >
+
+                  <div>
+
+                    <strong>
+                      ${product.nombre}
+                    </strong>
+
+                    <div
+                      class="mini-note"
+                    >
+                      ${Utils.money(
+                        product.precio
+                      )}
+                      c/u
+                    </div>
+
+                  </div>
+
+                  <div class="qty">
+
+                    <button
+                      onclick="
+                        App.changeQty(
+                          '${product.id}',
+                          -1
+                        )
+                      "
+                    >
+                      −
+                    </button>
+
+                    <b>
+                      ${item.qty}
+                    </b>
+
+                    <button
+                      onclick="
+                        App.changeQty(
+                          '${product.id}',
+                          1
+                        )
+                      "
+                    >
+                      +
+                    </button>
+
+                  </div>
+
+                  <strong>
+                    ${Utils.money(
+                      Number(
+                        product.precio
+                      ) *
+                      item.qty
+                    )}
+                  </strong>
+
+                </div>
+              `;
+            })
+            .join('');
+
+        const total =
+          State.cart.reduce(
+            (sum, item) => {
+              const product =
+                State.data.products
+                  .find(
+                    product =>
+                      String(
+                        product.id
+                      ) ===
+                      String(
+                        item.productId
+                      )
+                  );
+
+              return (
+                sum +
+                (
+                  product
+                    ? Number(
+                        product.precio
+                      ) *
+                      item.qty
+                    : 0
+                )
+              );
+            },
+            0
+          );
+
+        document.getElementById(
+          'cartBox'
+        ).innerHTML =
+          State.cart.length
+            ? `
+              ${lines}
+
+              <div
+                style="
+                  display:flex;
+                  justify-content:
+                    space-between;
+                  align-items:center;
+                  margin-top:18px
+                "
+              >
+
+                <div>
+
+                  <div
+                    class="mini-note"
+                  >
+                    Cliente
+                  </div>
+
+                  <strong>
+                    ${
+                      State.activeCustomer
+                        ? State
+                            .activeCustomer
+                            .nombre
+                        : 'Sin identificar'
+                    }
+                  </strong>
+
+                </div>
+
+                <div
+                  style="
+                    text-align:right
+                  "
+                >
+
+                  <div
+                    class="mini-note"
+                  >
+                    Total
+                  </div>
+
+                  <div
+                    class="metric"
+                  >
+                    ${Utils.money(
+                      total
+                    )}
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div
+                style="
+                  display:flex;
+                  gap:8px;
+                  justify-content:
+                    flex-end;
+                  margin-top:14px
+                "
+              >
+
+                <button
+                  class="btn ghost"
+                  onclick="
+                    App.openCustomerModal()
+                  "
+                >
+                  Identificar cliente
+                </button>
+
+                <button
+                  class="btn primary"
+                  onclick="
+                    App.checkout()
+                  "
+                >
+                  Registrar venta
+                </button>
+
+              </div>
+            `
+            : `
+              <div class="empty">
+                El carrito está vacío.
+              </div>
+            `;
+      },
+
+      loyalty() {
+        const customer =
+          State.activeCustomer;
+
+        if (!customer) {
+          document.getElementById(
+            'loyaltyArea'
+          ).innerHTML = `
+            <div
+              class="
+                card
+                empty
+              "
+            >
+
+              <h3>
+                Identifica a un cliente
+              </h3>
+
+              <p>
+                Así podrás mostrar
+                puntos,
+                recompra
+                y beneficios.
+              </p>
+
+              <button
+                class="
+                  btn
+                  primary
+                "
+                onclick="
+                  App.openCustomerModal()
+                "
+              >
+                Buscar cliente
+              </button>
+
+            </div>
+          `;
+
+          return;
+        }
+
+        const progress =
+          Math.min(
+            100,
+            Math.round(
+              Number(
+                customer.puntos
+              ) /
+              State.config
+                .rewardThreshold *
+              100
+            )
+          );
+
+        document.getElementById(
+          'loyaltyArea'
+        ).innerHTML = `
+          <div class="loyalty">
+
+            <div
+              class="loyalty-card"
+            >
+
+              <div
+                class="eyebrow"
+                style="
+                  color:#ff9ba0
+                "
+              >
+                BET PHARMA CONECTA
+              </div>
+
+              <h2>
+                ${customer.nombre}
+              </h2>
+
+              <div
+                class="points"
+              >
+                ${customer.puntos}
+              </div>
+
+              <div>
+                Puntos disponibles
+              </div>
+
+              <div
+                class="progress"
+              >
+                <span
+                  style="
+                    width:
+                    ${progress}%
+                  "
+                ></span>
+              </div>
+
+              <small>
+                ${Math.max(
+                  0,
+                  State.config
+                    .rewardThreshold -
+                  Number(
+                    customer.puntos
+                  )
+                )}
+                puntos para
+                el próximo beneficio
+              </small>
+
+            </div>
+
+            <div class="card">
+
+              <h3>
+                Relación con el cliente
+              </h3>
+
+              <div
+                class="
+                  grid
+                  cols-2
+                "
+                style="
+                  margin-top:12px
+                "
+              >
+
+                <div>
+
+                  <div
+                    class="metric"
+                  >
+                    ${Utils.money(
+                      customer
+                        .comprasTotales
+                    )}
+                  </div>
+
+                  <div
+                    class="
+                      metric-label
+                    "
+                  >
+                    Compras acumuladas
+                  </div>
+
+                </div>
+
+                <div>
+
+                  <div
+                    class="metric"
+                  >
+                    ${Utils.date(
+                      String(
+                        customer
+                          .ultimaCompra ||
+                        ''
+                      ).slice(
+                        0,
+                        10
+                      )
+                    )}
+                  </div>
+
+                  <div
+                    class="
+                      metric-label
+                    "
+                  >
+                    Última compra
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        `;
+      },
+
+      suggestions() {
+        const suggestions =
+          State.bootstrap
+            ?.suggestions ||
+          [];
+
+        document.getElementById(
+          'suggestionList'
+        ).innerHTML =
+          suggestions
+            .map(
+              suggestion => `
+                <div
+                  class="campaign"
+                  style="
+                    margin-bottom:14px
+                  "
+                >
+
+                  <h4>
+                    ${suggestion.titulo}
+                  </h4>
+
+                  <small>
+                    ${suggestion.reason}
+                  </small>
+
+                  <p>
+                    ${suggestion.descripcion}
+                  </p>
+
+                  <button
+                    class="btn"
+                    onclick="
+                      App.activateSuggestion(
+                        '${suggestion.id}'
+                      )
+                    "
+                  >
+                    Activar campaña
+                  </button>
+
+                </div>
+              `
+            )
+            .join('');
+      },
+
+      inventory() {
+        document.getElementById(
+          'inventoryTable'
+        ).innerHTML =
+          State.data.products
+            .map(product => {
+              const status =
+                Logic.productStatus(
+                  product
+                );
+
+              return `
+                <tr>
+
+                  <td>
+                    <b>
+                      ${product.nombre}
+                    </b>
+                  </td>
+
+                  <td>
+                    ${product.categoria}
+                  </td>
+
+                  <td>
+                    ${product.stock}
+                  </td>
+
+                  <td>
+                    ${product.stockMinimo}
+                  </td>
+
+                  <td>
+                    ${Utils.date(
+                      product.vencimiento
+                    )}
+                  </td>
+
+                  <td>
+                    <span
+                      class="
+                        pill
+                        ${
+                          status ===
+                          'critical'
+                            ? 'red'
+                            : status ===
+                              'warning'
+                            ? 'amber'
+                            : 'green'
+                        }
+                      "
+                    >
+                      ${status}
+                    </span>
+                  </td>
+
+                </tr>
+              `;
+            })
+            .join('');
+      },
+
+      render() {
+        this.metrics();
+        this.campaigns();
+        this.alerts();
+
+        this.products(
+          document.getElementById(
+            'productSearch'
+          )?.value || ''
+        );
+
+        this.cart();
+        this.loyalty();
+        this.suggestions();
+        this.inventory();
+      }
+    };
+
+    const App = {
+      async init() {
+        document
+          .querySelectorAll(
+            '.tab'
+          )
+          .forEach(button => {
+            button.addEventListener(
+              'click',
+              () =>
+                this.go(
+                  button.dataset.view
+                )
+            );
+          });
+
+        document
+          .getElementById(
+            'productSearch'
+          )
+          .addEventListener(
+            'input',
+            event =>
+              UI.products(
+                event.target.value
+              )
+          );
+
+        document
+          .getElementById(
+            'customerForm'
+          )
+          .addEventListener(
+            'submit',
+            event =>
+              this.saveCustomer(
+                event
+              )
+          );
+
+        document
+          .getElementById(
+            'productForm'
+          )
+          .addEventListener(
+            'submit',
+            event =>
+              this.saveProduct(
+                event
+              )
+          );
+
+        await this.refresh();
+
+        UI.toast(
+          'BET PHARMA CONECTA cargado.'
+        );
+      },
+
+      async refresh() {
+        try {
+          const data =
+            await Server.bootstrap();
+
+          State.bootstrap =
+            data;
+
+          State.data.products =
+            data.products || [];
+
+          State.data.campaigns =
+            data.campaigns || [];
+
+          State.config =
+            {
+              ...State.config,
+              ...data.config
+            };
+
+
+          UI.render();
+
+        } catch (error) {
+          console.error(error);
+
+          UI.toast(
+            'Error al cargar datos: ' +
+            error.message
+          );
+        }
+      },
+
+      go(id) {
+        document
+          .querySelectorAll(
+            '.view'
+          )
+          .forEach(view => {
+            view
+              .classList
+              .toggle(
+                'active',
+                view.id === id
+              );
+          });
+
+        document
+          .querySelectorAll(
+            '.tab'
+          )
+          .forEach(tab => {
+            tab
+              .classList
+              .toggle(
+                'active',
+                tab.dataset.view ===
+                id
+              );
+          });
+
+        window.scrollTo({
+          top: 430,
+          behavior: 'smooth'
+        });
+      },
+
+      openCustomerModal() {
+        document
+          .getElementById(
+            'customerModal'
+          )
+          .classList
+          .add('show');
+      },
+
+      closeCustomerModal() {
+        document
+          .getElementById(
+            'customerModal'
+          )
+          .classList
+          .remove('show');
+      },
+
+      async lookupCustomer() {
+        const query =
+          String(
+            document
+              .getElementById(
+                'customerQuery'
+              )
+              .value ||
+            ''
+          ).trim();
+
+        const box =
+          document
+            .getElementById(
+              'customerSearchResult'
+            );
+
+        if (!query) {
+          box.innerHTML = `
+            <div class="mini-note">
+              Ingresa RUT, teléfono o email.
+            </div>
+          `;
+
+          return;
+        }
+
+        box.innerHTML = `
+          <div class="mini-note">
+            Buscando cliente...
+          </div>
+        `;
+
+        try {
+          const customer =
+            await Server
+              .findCustomer(
+                query
+              );
+
+          if (!customer) {
+            State.activeCustomer =
+              null;
+
+            box.innerHTML = `
+              <div class="mini-note">
+                Cliente no encontrado.
+                Puedes registrarlo abajo.
+              </div>
+            `;
+
+            return;
+          }
+
+          State.activeCustomer =
+            customer;
+
+          box.innerHTML = `
+            <div
+              class="card"
+              style="
+                box-shadow:none
+              "
+            >
+
+              <b>
+                ${customer.nombre}
+              </b>
+
+              <div
+                class="mini-note"
+              >
+                ${customer.puntos}
+                puntos ·
+                ${Utils.money(
+                  customer
+                    .comprasTotales
+                )}
+                acumulados
+              </div>
+
+              <button
+                class="
+                  btn
+                  primary
+                "
+                style="
+                  margin-top:8px
+                "
+                onclick="
+                  App.useActiveCustomer()
+                "
+              >
+                Usar cliente
+              </button>
+
+            </div>
+          `;
+
+        } catch (error) {
+          box.innerHTML = `
+            <div class="mini-note">
+              ${error.message}
+            </div>
+          `;
+        }
+      },
+
+      useActiveCustomer() {
+        if (
+          !State.activeCustomer
+        ) {
+          return;
+        }
+
+        this.closeCustomerModal();
+
+        UI.render();
+
+        this.go(
+          'beneficios'
+        );
+      },
+
+      async saveCustomer(
+        event
+      ) {
+        event.preventDefault();
+
+        const form =
+          new FormData(
+            event.currentTarget
+          );
+
+        const data = {
+          nombre:
+            String(
+              form.get(
+                'nombre'
+              ) || ''
+            ).trim(),
+
+          rut:
+            String(
+              form.get(
+                'rut'
+              ) || ''
+            ).trim(),
+
+          telefono:
+            String(
+              form.get(
+                'telefono'
+              ) || ''
+            ).trim(),
+
+          email:
+            String(
+              form.get(
+                'email'
+              ) || ''
+            ).trim(),
+
+          autorizado:
+            form.get(
+              'autorizado'
+            ) ===
+            'on'
+        };
+
+        try {
+          const customer =
+            await Server
+              .saveCustomer(
+                data
+              );
+
+          State.activeCustomer =
+            customer;
+
+          event
+            .currentTarget
+            .reset();
+
+          this
+            .closeCustomerModal();
+
+          await this.refresh();
+
+          UI.toast(
+            'Cliente guardado.'
+          );
+
+          this.go(
+            'beneficios'
+          );
+
+        } catch (error) {
+          UI.toast(
+            error.message
+          );
+        }
+      },
+
+      addToCart(productId) {
+        const product =
+          State.data.products
+            .find(
+              item =>
+                String(
+                  item.id
+                ) ===
+                String(
+                  productId
+                )
+            );
+
+        if (
+          !product ||
+          Number(
+            product.stock
+          ) <= 0
+        ) {
+          return;
+        }
+
+        const line =
+          State.cart.find(
+            item =>
+              String(
+                item.productId
+              ) ===
+              String(
+                productId
+              )
+          );
+
+        if (line) {
+          if (
+            line.qty <
+            Number(
+              product.stock
+            )
+          ) {
+            line.qty += 1;
+          }
+        } else {
+          State.cart.push({
+            productId:
+              productId,
+
+            qty:
+              1
+          });
+        }
+
+        UI.cart();
+
+        UI.toast(
+          'Producto agregado.'
+        );
+      },
+
+      changeQty(
+        productId,
+        delta
+      ) {
+        const line =
+          State.cart.find(
+            item =>
+              String(
+                item.productId
+              ) ===
+              String(
+                productId
+              )
+          );
+
+        const product =
+          State.data.products
+            .find(
+              item =>
+                String(
+                  item.id
+                ) ===
+                String(
+                  productId
+                )
+            );
+
+        if (
+          !line ||
+          !product
+        ) {
+          return;
+        }
+
+        line.qty =
+          Math.max(
+            0,
+            Math.min(
+              Number(
+                product.stock
+              ),
+              line.qty +
+              delta
+            )
+          );
+
+        if (
+          line.qty === 0
+        ) {
+          State.cart =
+            State.cart.filter(
+              item =>
+                String(
+                  item.productId
+                ) !==
+                String(
+                  productId
+                )
+            );
+        }
+
+        UI.cart();
+      },
+
+      async checkout() {
+        if (
+          !State.cart.length
+        ) {
+          return;
+        }
+
+        try {
+          const result =
+            await Server
+              .registerSale({
+                customerId:
+                  State.activeCustomer
+                    ? State
+                        .activeCustomer
+                        .id
+                    : '',
+
+                items:
+                  State.cart
+                    .map(
+                      item => ({
+                        productId:
+                          item.productId,
+
+                        qty:
+                          item.qty
+                      })
+                    )
+              });
+
+          State.cart = [];
+
+          if (
+            result.customer
+          ) {
+            State.activeCustomer =
+              result.customer;
+          }
+
+          State.bootstrap =
+            result.bootstrap;
+
+          State.data.products =
+            result.bootstrap
+              .products;
+
+          State.data.campaigns =
+            result.bootstrap
+              .campaigns;
+
+          UI.render();
+
+          if (
+            result.rewardUnlocked
+          ) {
+            UI.toast(
+              'Beneficio desbloqueado: ' +
+              Utils.money(
+                State.config
+                  .rewardAmount
+              )
+            );
+          } else {
+            UI.toast(
+              'Venta registrada · +' +
+              result.pointsEarned +
+              ' puntos'
+            );
+          }
+
+        } catch (error) {
+          UI.toast(
+            error.message
+          );
+        }
+      },
+
+      async saveProduct(
+        event
+      ) {
+        event.preventDefault();
+
+        const form =
+          new FormData(
+            event.currentTarget
+          );
+
+        const data = {
+          nombre:
+            String(
+              form.get(
+                'nombre'
+              ) || ''
+            ).trim(),
+
+          categoria:
+            String(
+              form.get(
+                'categoria'
+              ) || ''
+            ).trim(),
+
+          precio:
+            Number(
+              form.get(
+                'precio'
+              ) || 0
+            ),
+
+          stock:
+            Number(
+              form.get(
+                'stock'
+              ) || 0
+            ),
+
+          stockMinimo:
+            Number(
+              form.get(
+                'stockMinimo'
+              ) || 0
+            ),
+
+          vencimiento:
+            String(
+              form.get(
+                'vencimiento'
+              ) || ''
+            ),
+
+          temporada:
+            String(
+              form.get(
+                'temporada'
+              ) ||
+              'Todo el año'
+            )
+        };
+
+        try {
+          await Server
+            .saveProduct(
+              data
+            );
+
+          event
+            .currentTarget
+            .reset();
+
+          await this.refresh();
+
+          UI.toast(
+            'Producto guardado.'
+          );
+
+        } catch (error) {
+          UI.toast(
+            error.message
+          );
+        }
+      },
+
+      async activateSuggestion(
+        id
+      ) {
+        const suggestion =
+          State.bootstrap
+            ?.suggestions
+            ?.find(
+              item =>
+                item.id === id
+            );
+
+        if (!suggestion) {
+          return;
+        }
+
+        try {
+          await Server
+            .saveCampaign({
+              titulo:
+                suggestion.titulo,
+
+              descripcion:
+                suggestion
+                  .descripcion,
+
+              segmento:
+                suggestion.segmento,
+
+              descuento:
+                suggestion.descuento,
+
+              activa:
+                true,
+
+              automatica:
+                true
+            });
+
+          await this.refresh();
+
+          UI.toast(
+            'Campaña activada.'
+          );
+
+        } catch (error) {
+          UI.toast(
+            error.message
+          );
+        }
+      }
+    };
+
+    window.App =
+      App;
+
+    document
+      .addEventListener(
+        'DOMContentLoaded',
+        () => App.init()
+      );
+  </script>
 
 </body>
 </html>
